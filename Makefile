@@ -10,7 +10,7 @@ ODIR=objects
 CDIR=code
 TDIR=tests
 TBIN=testsbin
-OBJECTS=trie.o matrix.o input_man.o
+OBJECTS=trie.o matrix.o input_man.o solver.o
 OBJECTSPATH = $(patsubst %,$(ODIR)/%,$(OBJECTS))
 .PHONY: all clean debug
 
@@ -50,5 +50,5 @@ $(ODIR)/%.o: $(TDIR)/%.c
 	$(CC) $(FLAGS) $< -o $@
 
 
-$(TBIN)/trie.test: all $(ODIR)/trie.test.o
+$(TBIN)/trie.test: $(OBJECTSPATH) $(ODIR)/trie.test.o
 	$(CC) $(LNFLAGS) $(OBJECTSPATH) $(ODIR)/trie.test.o $(LNLIBS) -o $(TBIN)/trie.test

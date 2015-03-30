@@ -1,6 +1,7 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 #define MATRIX_SIDE 4
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 

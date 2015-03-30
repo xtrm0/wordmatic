@@ -46,3 +46,23 @@ void trie_destroy(trie_node * root) {
   free(root->prox);
   free(root);
 }
+
+
+trie_iterator trie_iterator_init(trie_node * root) {
+  trie_iterator it;
+  it.node = root;
+  return it;
+}
+
+int it_travel(trie_iterator * it, char c) {
+  if (it->node->prox[c - TRIE_START_CHAR] == NULL) {
+    return 1;
+  } else {
+    it->node = it->node->prox[c - TRIE_START_CHAR];
+    return 0;
+  }
+}
+
+int it_isendnode(trie_iterator * it) {
+  return (it->node->endnode==1);
+}

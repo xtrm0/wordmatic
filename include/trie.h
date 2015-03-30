@@ -1,5 +1,7 @@
 #ifndef TRIE_H
 #define TRIE_H
+
+//TODO: WE NEED TO IMPLEMENT A SUPER EFICIENT RADIX TREE HERE
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -14,6 +16,13 @@ typedef struct TRIE_NODE {
   struct TRIE_NODE ** prox; /*ponteiro para array de 26 ponteiros*/
 } trie_node;
 
+/*
+  TODO:We implement this iterator to allow to easily implement a radix tree
+ */
+typedef struct TRIE_ITERATOR {
+  trie_node * node;
+} trie_iterator;
+
 trie_node * trie_init();
 
 trie_node * trie_insert(trie_node * root, char * word);
@@ -21,6 +30,19 @@ trie_node * trie_insert(trie_node * root, char * word);
 int trie_search(trie_node * root, char * word);
 
 void trie_destroy(trie_node * root);
+
+
+
+trie_iterator it_init(trie_node * root);
+
+/*
+  Sets the given trie iterator to point to char if available and return 0
+  If not available, no change happens to the iterator, and this function returns -1
+*/
+int it_travel(trie_iterator * it, char c);
+
+int it_isendnode(trie_iterator * it);
+
 
 
 
