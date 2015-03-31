@@ -19,13 +19,23 @@ int main() {
   s1[5]='o';
   printf("%d\n", trie_search(root, s1));
   trie_destroy(root);
-
-  printf("running long dictionary insert test\n");
+  printf("Running long dictionary insert test\n");
   root = trie_init();
   f= fopen("/home/xtrm0/repo/school/aed/proj/dictionaries/input.dic", "r");
   while (fscanf(f,"%s", s4)!=EOF) {
     trie_insert(root, s4);
+    if (trie_search(root, s4)!=1) {
+      printf("Error: %s\n", s4);      
+    }
   }
-  trie_destroy(root);
+  rewind(f);
+  while (fscanf(f,"%s", s4)!=EOF) {
+    if (trie_search(root, s4)!=1) {
+      printf("Error: %s\n", s4);
+    }
+  }
+  printf("done! press any...\n");
+
+
   return 0;
 }

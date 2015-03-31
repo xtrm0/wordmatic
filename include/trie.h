@@ -13,13 +13,15 @@
 
 typedef struct TRIE_NODE {
   int endnode;
-  struct TRIE_NODE ** prox; /*ponteiro para array de 26 ponteiros*/
+  char * append;
+  struct TRIE_NODE ** prox; /*ponteiro para array de 26 ponteiros TODO: tornar isto uma array 1d*/
 } trie_node;
 
 /*
-  TODO:We implement this iterator to allow to easily implement a radix tree
+  This iterator purpose is to let the user agnostic about wheter we are using a trie or a radix tree
  */
 typedef struct TRIE_ITERATOR {
+  int pos;
   trie_node * node;
 } trie_iterator;
 
@@ -37,7 +39,7 @@ trie_iterator it_init(trie_node * root);
 
 /*
   Sets the given trie iterator to point to char if available and return 0
-  If not available, no change happens to the iterator, and this function returns -1
+  If not available, no change happens to the iterator, and this function returns 1
 */
 int it_travel(trie_iterator * it, char c);
 

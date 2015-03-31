@@ -34,6 +34,9 @@ debug: FLAGS += -D_DEBUG -g
 debug: LNFLAGS += -D_DEBUG -g
 debug: wordmatic
 
+test: clean
+test: FLAGS += -D_DEBUG -g
+test: LNFLAGS += -D_DEBUG -g
 test: $(TBIN)/trie.test
 
 
