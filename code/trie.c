@@ -5,7 +5,7 @@ trie_node * trie_init() {
   trie = malloc(sizeof(trie_node));
   TESTMEM(trie);
   memset(trie,0,sizeof(trie_node));
-  
+
   return trie;
 }
 
@@ -60,7 +60,7 @@ trie_node * trie_insert(trie_node * root, char * word) {
   int s=0;
   if (root==NULL)
     root = trie_init();
-  
+
   if (root->append == NULL) {
     if (root->prox == NULL && !root->endnode) {
       if (*word!='\0') {
@@ -89,7 +89,7 @@ trie_node * trie_insert(trie_node * root, char * word) {
     }
     s++;
   }
-  
+
   //word is bigger than append, we continue on next node
   if (root->append[s]=='\0') {
     if (root->prox==NULL) trie_init_prox(root);
@@ -98,7 +98,7 @@ trie_node * trie_insert(trie_node * root, char * word) {
   }
 
   //either append is bigger than word, or they differ now, or a substr of append should be final - a split occurs
-  trie_split_insert(root, s, word); 
+  trie_split_insert(root, s, word);
   return root;
 }
 

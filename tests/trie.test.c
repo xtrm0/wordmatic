@@ -25,7 +25,7 @@ int main() {
   while (fscanf(f,"%s", s4)!=EOF) {
     trie_insert(root, s4);
     if (trie_search(root, s4)!=1) {
-      printf("Error: %s\n", s4);      
+      printf("Error: %s\n", s4);
     }
   }
   rewind(f);
@@ -35,6 +35,7 @@ int main() {
     }
   }
   printf("done! press any...\n");
+  scanf("%d", s1);
 
 
   return 0;
