@@ -36,6 +36,7 @@ int main() {
   }
   printf("done! press any...\n");
   scanf("%d", s1);
+  trie_destroy(root);
 
 
   return 0;

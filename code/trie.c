@@ -72,6 +72,15 @@ int it_travel(trie_iterator * it, char c) {
   return 0;
 }
 
+int it_travel_s(trie_iterator * it, char * c) {
+  while (c) {
+    if (it_travel(it, *c))
+      return 1;
+    c++;
+  }
+  return 0;
+}
+
 int it_isendnode(trie_iterator * it) {
   if ((*it)==NULL) {
     return 0;
