@@ -1,8 +1,2 @@
-break code/solver.c:34
-
-
-
-
-
-
+break _print_solution_all_len
 

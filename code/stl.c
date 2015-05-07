@@ -75,6 +75,7 @@ void queue_destroy(queue * q) {
 list * merge_uniq(list * left, list * right) {
   list * ans;
   list * aux;
+  list * uv;
   if (right==NULL) {
     return left;
   }
@@ -82,16 +83,16 @@ list * merge_uniq(list * left, list * right) {
     return right;
   }
   if (strcmp(left->val->word,right->val->word)<=0) {
-    ans = left;
+    uv = ans = left;
     left = left->next;
   } else {
-    ans = right;
+    uv = ans = right;
     right = right->next;
   }
   while (left!=NULL && right!=NULL) {
     if (strcmp(left->val->word,right->val->word)<=0) {
       if (strcmp(ans->val->word, left->val->word)!=0) {
-        ans->next = left;
+        uv = uv->next = left;
         left = left->next;
       } else {
         aux = left->next;
@@ -100,7 +101,7 @@ list * merge_uniq(list * left, list * right) {
       }
     } else {
       if (strcmp(ans->val->word, right->val->word)!=0) {
-        ans->next = right;
+        uv = uv->next = right;
         right = right->next;
       } else {
         aux = right->next;
@@ -110,11 +111,11 @@ list * merge_uniq(list * left, list * right) {
     }
   }
   while (left!=NULL) {
-    ans->next = left;
+    uv = uv->next = left;
     left = left->next;
   }
   while (right!=NULL) {
-    ans->next = right;
+    uv = uv->next = right;
     right = right->next;
   }
   return ans;
