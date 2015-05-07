@@ -1,7 +1,7 @@
 
-FLAGS=-c -Wall 
+FLAGS=-c -Wall
 #-pedantic -ansi
-LNFLAGS=-Wall 
+LNFLAGS=-Wall
 #-pedantic -ansi
 LNLIBS=
 CC = gcc
@@ -10,7 +10,7 @@ ODIR=objects
 CDIR=code
 TDIR=tests
 TBIN=testsbin
-OBJECTS=trie.o matrix.o input_man.o solver.o
+OBJECTS=trie.o matrix.o input_man.o solver.o stl.o
 OBJECTSPATH = $(patsubst %,$(ODIR)/%,$(OBJECTS))
 .PHONY: all clean debug
 

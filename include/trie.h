@@ -19,7 +19,6 @@
 
 typedef struct TRIE_NODE {
   int endnode;
-  char * append;
   struct TRIE_NODE *prox[TRIE_END_CHAR-TRIE_START_CHAR+1];
 } trie_node;
 

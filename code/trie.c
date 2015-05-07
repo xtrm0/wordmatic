@@ -52,8 +52,6 @@ void trie_destroy(trie_node * root) {
       trie_destroy(root->prox[i]);
     }
   }
-  if (root->append!=NULL)
-    free(root->append);
   free(root);
 }
 
@@ -73,7 +71,7 @@ int it_travel(trie_iterator * it, char c) {
 }
 
 int it_travel_s(trie_iterator * it, char * c) {
-  while (c) {
+  while (*c) {
     if (it_travel(it, *c))
       return 1;
     c++;

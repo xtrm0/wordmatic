@@ -6,7 +6,7 @@ trie_node * new_trie_from_dictionary(char * filename) {
   char read[20];
   int c=0;
   int i=0;
-  fin = fopen("filename", "r");
+  fin = fopen(filename, "r");
   if (fin==NULL) {
     printf("Erro: Nao foi possivel abrir \"%s\"!\n", filename);
     exit(ENOENT);

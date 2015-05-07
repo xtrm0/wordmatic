@@ -15,4 +15,6 @@ matrix * matrix_init();
 
 void matrix_destroy(matrix * m);
 
+int read_matrix(FILE * fin, matrix * mat);
+
 #endif

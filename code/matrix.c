@@ -13,7 +13,7 @@ void matrix_destroy(matrix * m) {
 int read_matrix(FILE * fin, matrix * mat) {
   int i, j, read_chars;
   read_chars = 0;
-  memset(matrix, 0, sizeof(matrix));
+  memset(mat, 0, sizeof(matrix));
   for (i=0; i<MATRIX_SIDE; i++) {
     for (j=0; j<MATRIX_SIDE; j++) {
       fscanf(fin, "%s", mat->M[i][j]);

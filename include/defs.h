@@ -1,6 +1,8 @@
 #ifndef DEFS_H
 #define DEFS_H
 #include <errno.h>
+#include <limits.h>
+#include <assert.h>
 typedef char char_type;
 
 /*
