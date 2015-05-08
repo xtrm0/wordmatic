@@ -1,2 +1,3 @@
-break _print_solution_all_len
+break solver.c:76
+
 

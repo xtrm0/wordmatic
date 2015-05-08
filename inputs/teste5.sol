@@ -1,445 +1,238 @@
-galava 6
+gaiato 11 21 31 41 42 43 6
 6
 
-gala 4
-gala 4
-galo 4
-gala 4
-gala 4
-galo 4
-gaia 4
-alga 4
-alai 4
-alia 4
-alia 4
-alva 4
-alvo 4
-alva 4
-alvo 4
-alho 4
-alho 4
-alga 4
-alga 4
-alai 4
-alia 4
-alia 4
-alva 4
-alvo 4
-alva 4
-alvo 4
-alho 4
-alho 4
-anho 4
-anos 4
-anho 4
-anho 4
-ansa 4
-halo 4
-alga 4
-alia 4
-alvo 4
-alva 4
-alvo 4
-alho 4
-alho 4
-avos 4
-avia 4
-avos 4
-laos 4
-laos 4
-laia 4
-lavo 4
-lava 4
-lavo 4
-lona 4
-lhos 4
-lhos 4
-lhas 4
-olga 4
-olga 4
-olho 4
-olha 4
-oval 4
-ovai 4
-ovai 4
-ovos 4
-naos 4
-nova 4
-nova 4
-novo 4
-ilho 4
-ilho 4
-ilha 4
-vaga 4
-vala 4
-vala 4
-valo 4
-vali 4
-vaia 4
-vila 4
-vila 4
-vila 4
-vito 4
-vaia 4
-vota 4
-voas 4
-sola 4
-sola 4
-sola 4
-sova 4
-sova 4
-sovo 4
-sova 4
-sovo 4
-sova 4
-aval 4
-avos 4
-avia 4
-avos 4
-atia 4
-atos 4
-toas 4
-oval 4
-ovai 4
-ovos 4
-ovai 4
-asna 4
-asno 4
-416
+alai 12 22 21 31 4
+alga 12 22 11 21 4
+alho 12 22 33 23 4
+alia 12 22 31 21 4
+alva 12 22 32 21 4
+alvo 12 22 32 23 4
+anho 13 24 33 23 4
+anos 13 24 23 34 4
+ansa 13 24 34 44 4
+asna 44 34 24 13 4
+asno 44 34 24 23 4
+atia 41 42 31 21 4
+atos 41 42 43 34 4
+aval 41 32 21 22 4
+avia 21 32 31 41 4
+avos 21 32 23 34 4
+gaia 11 21 31 41 4
+gala 11 21 22 12 4
+galo 11 21 22 23 4
+halo 14 13 22 23 4
+ilha 31 22 33 44 4
+ilho 31 22 33 23 4
+laia 22 21 31 41 4
+laos 22 12 23 34 4
+lava 22 21 32 41 4
+lavo 22 21 32 23 4
+lhas 22 33 44 34 4
+lhos 22 33 23 34 4
+lona 22 23 24 13 4
+naos 24 13 23 34 4
+nova 24 23 32 21 4
+novo 24 23 32 43 4
+olga 23 22 11 21 4
+olha 23 22 33 44 4
+olho 23 22 33 43 4
+ovai 23 32 21 31 4
+oval 23 32 21 22 4
+ovos 23 32 43 34 4
+sola 34 23 22 21 4
+sova 34 23 32 21 4
+sovo 34 23 32 43 4
+toas 42 43 44 34 4
+vaga 32 21 11 12 4
+vaia 32 21 31 41 4
+vala 32 21 22 12 4
+vali 32 21 22 31 4
+valo 32 21 22 23 4
+vila 32 31 22 21 4
+vito 32 31 42 43 4
+voas 32 43 44 34 4
+vota 32 43 42 41 4
+204
 
-gal 3
-gala 4
-galao 5
-gala 4
-galai 5
-galava 6
-galo 4
-galos 5
-galia 5
-galia 5
-galho 5
-galhos 6
-galho 5
-galhos 6
-galha 5
-galhas 6
-gal 3
-gala 4
-galao 5
-gala 4
-galao 5
-galo 4
-galos 5
-galia 5
-galho 5
-galhos 6
-galho 5
-galhos 6
-galha 5
-galhas 6
-gaivota 7
-gaia 4
-gaiato 6
-gaiatos 7
-gaita 5
-glosa 5
-agaiato 7
-alga 4
-ala 3
-ala 3
-alai 4
-alava 5
-alo 3
-ali 3
-alia 4
-aliava 6
-alia 4
-aliava 6
-alva 4
-alvo 4
-alvos 5
-alvito 6
-alva 4
-alvo 4
-alvos 5
-alho 4
-alhos 5
-alho 4
-alhos 5
-aos 3
-alga 4
-alga 4
-ala 3
-alaga 5
-alagai 6
-alagava 7
-ala 3
-alaga 5
-alai 4
-alava 5
-alo 3
-ali 3
-alia 4
-aliava 6
-alia 4
-aliava 6
-alva 4
-alvo 4
-alvos 5
-alvito 6
-alva 4
-alvo 4
-alvos 5
-alho 4
-alhos 5
-alho 4
-alhos 5
-aos 3
-anho 4
-anhos 5
-ano 3
-anos 4
-anoso 5
-anosa 5
-anho 4
-anhos 5
-anho 4
-anhos 5
-ansa 4
-halo 4
-halito 6
-halitos 7
-hao 3
-hansa 5
-alga 4
-ala 3
-ala 3
-alo 3
-ali 3
-alia 4
-alvo 4
-alvos 5
-alvito 6
-alva 4
-alvo 4
-alvos 5
-alho 4
-alhos 5
-alho 4
-alhos 5
-aia 3
-avo 3
-avos 4
-avila 5
-avila 5
-avilano 7
-avia 4
-avo 3
-avos 4
-laos 4
-laos 4
-lanho 5
-lanhoso 7
-lanoso 6
-lanosa 6
-lanho 5
-lanhoso 7
-lanho 5
-lanhoso 7
-lanha 5
-lanhas 6
-laivo 5
-laivos 6
-laivo 5
-laivos 6
-laia 4
-lavo 4
-lavoso 6
-lava 4
-lavai 5
-lavo 4
-lavoso 6
-lona 4
-los 3
-lia 3
-lia 3
-lho 3
-lhos 4
-lho 3
-lhos 4
-lha 3
-lhas 4
-olga 4
-olga 4
-ola 3
-ola 3
-ola 3
-oliva 5
-oliva 5
-olho 4
-olhos 5
-olha 4
-olhas 5
-olhao 5
-ova 3
-oval 4
-ovala 5
-ovala 5
-ovai 4
-ova 3
-ovai 4
-ovo 3
-ovos 4
-nao 3
-naos 4
-nova 4
-novilho 7
-novilhos 8
-novilha 7
-novilhas 8
-nova 4
-novato 6
-novatos 7
-novo 4
-novos 5
-nos 3
-ilho 4
-ilho 4
-ilhota 6
-ilha 4
-ilhas 5
-iva 3
-ivo 3
-iva 3
-ivo 3
-vaga 4
-vagalhao 8
-vagao 5
-vala 4
-vala 4
-valo 4
-vali 4
-valia 5
-valho 5
-valho 5
-valha 5
-valhas 6
-vai 3
-vaia 4
-voa 3
-voa 3
-volga 5
-volga 5
-von 3
-vos 3
-via 3
-vil 3
-vila 4
-vilao 5
-vila 4
-vilao 5
-vila 4
-via 3
-vito 4
-vai 3
-vaia 4
-vos 3
-vota 4
-votai 5
-voa 3
-voas 4
-has 3
-hao 3
-soa 3
-soalho 6
-soalha 6
-soa 3
-soalho 6
-soalha 6
-sol 3
-sola 4
-sola 4
-sola 4
-solva 5
-solvi 5
-solvia 6
-solvia 6
-solva 5
-solvo 5
-solha 5
-sonha 5
-sonho 5
-sonha 5
-sova 4
-sovai 5
-sova 4
-sovai 5
-sovo 4
-sova 4
-sovai 5
-sovo 4
-sova 4
-sovai 5
-soa 3
-sao 3
-aia 3
-aval 4
-avo 3
-avos 4
-avia 4
-avila 5
-avila 5
-avilano 7
-avila 5
-avo 3
-avos 4
-ati 3
-atia 4
-atila 5
-atila 5
-atila 5
-atilho 6
-atilhos 7
-atilho 6
-atilhos 7
-ativa 5
-ativo 5
-ativos 6
-ativo 5
-ativos 6
-ato 3
-atos 4
-tia 3
-til 3
-tia 3
-tvi 3
-tos 3
-toa 3
-toas 4
-ova 3
-oval 4
-ovala 5
-ovala 5
-ovalo 5
-ovai 4
-ovo 3
-ovos 4
-ova 3
-ovai 4
-aso 3
-asna 4
-asnal 5
-asno 4
-aso 3
-aos 3
-1449
+agaiato 12 11 21 31 41 42 43 7
+aia 21 31 41 3
+ala 12 22 21 3
+alaga 13 22 21 11 12 5
+alagai 13 22 12 11 21 31 6
+alagava 13 22 12 11 21 32 41 7
+alai 12 22 21 31 4
+alava 12 22 21 32 41 5
+alga 12 22 11 21 4
+alho 12 22 33 23 4
+alhos 12 22 33 23 34 5
+ali 12 22 31 3
+alia 12 22 31 21 4
+aliava 12 22 31 21 32 41 6
+alo 12 22 23 3
+alva 12 22 32 21 4
+alvito 12 22 32 31 42 43 6
+alvo 12 22 32 23 4
+alvos 12 22 32 23 34 5
+anho 13 24 33 23 4
+anhos 13 24 33 23 34 5
+ano 13 24 23 3
+anos 13 24 23 34 4
+anosa 13 24 23 34 44 5
+anoso 13 24 23 34 43 5
+ansa 13 24 34 44 4
+aos 12 23 34 3
+asna 44 34 24 13 4
+asnal 44 34 24 13 22 5
+asno 44 34 24 23 4
+aso 44 34 23 3
+ati 41 42 31 3
+atia 41 42 31 21 4
+atila 41 42 31 22 21 5
+atilho 41 42 31 22 33 23 6
+atilhos 41 42 31 22 33 23 34 7
+ativa 41 42 31 32 21 5
+ativo 41 42 31 32 23 5
+ativos 41 42 31 32 23 34 6
+ato 41 42 43 3
+atos 41 42 43 34 4
+aval 41 32 21 22 4
+avia 21 32 31 41 4
+avila 21 32 31 22 12 5
+avilano 21 32 31 22 13 24 23 7
+avo 21 32 23 3
+avos 21 32 23 34 4
+gaia 11 21 31 41 4
+gaiato 11 21 31 41 42 43 6
+gaiatos 11 21 31 41 42 43 34 7
+gaita 11 21 31 42 41 5
+gaivota 11 21 31 32 43 42 41 7
+gal 11 21 22 3
+gala 11 21 22 12 4
+galai 11 12 22 21 31 5
+galao 11 21 22 12 23 5
+galava 11 12 22 21 32 41 6
+galha 11 21 22 33 44 5
+galhas 11 21 22 33 44 34 6
+galho 11 21 22 33 23 5
+galhos 11 21 22 33 23 34 6
+galia 11 21 22 31 41 5
+galo 11 21 22 23 4
+galos 11 21 22 23 34 5
+glosa 11 22 23 34 44 5
+halito 14 13 22 31 42 43 6
+halitos 14 13 22 31 42 43 34 7
+halo 14 13 22 23 4
+hansa 14 13 24 34 44 5
+hao 14 13 23 3
+has 33 44 34 3
+ilha 31 22 33 44 4
+ilhas 31 22 33 44 34 5
+ilho 31 22 33 23 4
+ilhota 31 22 33 43 42 41 6
+iva 31 32 21 3
+ivo 31 32 23 3
+laia 22 21 31 41 4
+laivo 22 21 31 32 23 5
+laivos 22 21 31 32 23 34 6
+lanha 22 13 24 33 44 5
+lanhas 22 13 24 33 44 34 6
+lanho 22 13 24 33 23 5
+lanhoso 22 13 24 33 23 34 43 7
+lanosa 22 13 24 23 34 44 6
+lanoso 22 13 24 23 34 43 6
+laos 22 12 23 34 4
+lava 22 21 32 41 4
+lavai 22 21 32 41 31 5
+lavo 22 21 32 23 4
+lavoso 22 21 32 23 34 43 6
+lha 22 33 44 3
+lhas 22 33 44 34 4
+lho 22 33 23 3
+lhos 22 33 23 34 4
+lia 22 31 21 3
+lona 22 23 24 13 4
+los 22 23 34 3
+nao 24 13 23 3
+naos 24 13 23 34 4
+nos 24 23 34 3
+nova 24 23 32 21 4
+novato 24 23 32 41 42 43 6
+novatos 24 23 32 41 42 43 34 7
+novilha 24 23 32 31 22 33 44 7
+novilhas 24 23 32 31 22 33 44 34 8
+novilho 24 23 32 31 22 33 43 7
+novilhos 24 23 32 31 22 33 43 34 8
+novo 24 23 32 43 4
+novos 24 23 32 43 34 5
+ola 23 22 21 3
+olga 23 22 11 21 4
+olha 23 22 33 44 4
+olhao 23 22 33 44 43 5
+olhas 23 22 33 44 34 5
+olho 23 22 33 43 4
+olhos 23 22 33 43 34 5
+oliva 23 22 31 32 21 5
+ova 23 32 21 3
+ovai 23 32 21 31 4
+oval 23 32 21 22 4
+ovala 23 32 21 22 12 5
+ovalo 43 32 21 22 23 5
+ovo 23 32 43 3
+ovos 23 32 43 34 4
+sao 34 44 43 3
+soa 34 23 12 3
+soalha 34 23 12 22 33 44 6
+soalho 34 23 12 22 33 43 6
+sol 34 23 22 3
+sola 34 23 22 21 4
+solha 34 23 22 33 44 5
+solva 34 23 22 32 21 5
+solvi 34 23 22 32 31 5
+solvia 34 23 22 32 31 21 6
+solvo 34 23 22 32 43 5
+sonha 34 23 24 33 44 5
+sonho 34 23 24 33 43 5
+sova 34 23 32 21 4
+sovai 34 23 32 21 31 5
+sovo 34 23 32 43 4
+tia 42 31 21 3
+til 42 31 22 3
+toa 42 43 44 3
+toas 42 43 44 34 4
+tos 42 43 34 3
+tvi 42 32 31 3
+vaga 32 21 11 12 4
+vagalhao 32 21 11 12 22 33 44 43 8
+vagao 32 21 11 12 23 5
+vai 32 21 31 3
+vaia 32 21 31 41 4
+vala 32 21 22 12 4
+valha 32 21 22 33 44 5
+valhas 32 21 22 33 44 34 6
+valho 32 21 22 33 23 5
+vali 32 21 22 31 4
+valia 32 21 22 31 41 5
+valo 32 21 22 23 4
+via 32 31 21 3
+vil 32 31 22 3
+vila 32 31 22 21 4
+vilao 32 31 22 12 23 5
+vito 32 31 42 43 4
+voa 32 23 12 3
+voas 32 43 44 34 4
+volga 32 23 22 11 21 5
+von 32 23 24 3
+vos 32 23 34 3
+vota 32 43 42 41 4
+votai 32 43 42 41 31 5
+780
 
-novilhos 8
+novilhos 24 23 32 31 22 33 43 34 8
 8
 
-novos 20
+novos 24 23 32 43 34 20
 20
 
-anhos 17
+anhos 13 24 33 23 34 17
 17
 

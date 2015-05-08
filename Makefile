@@ -1,7 +1,7 @@
 
-FLAGS=-c -Wall
+FLAGS=-O3 -c -Wall
 #-pedantic -ansi
-LNFLAGS=-Wall
+LNFLAGS=-O3 -Wall
 #-pedantic -ansi
 LNLIBS=
 CC = gcc
@@ -10,12 +10,15 @@ ODIR=objects
 CDIR=code
 TDIR=tests
 TBIN=testsbin
-OBJECTS=trie.o matrix.o input_man.o solver.o stl.o
+OBJECTS=trie.o matrix.o input_man.o solver.o stl.o avl.o
 OBJECTSPATH = $(patsubst %,$(ODIR)/%,$(OBJECTS))
 .PHONY: all clean debug
 
 
 all: wordmatic
+
+execall: wordmatic
+	find ../proj/aux/Prof_tests/Testes/ -name "*.puz" -exec sh -c "echo {}; /usr/bin/time -v ./wordmatic dictionaries/input.dic {}" \;
 
 drun: debug
 	./wordmatic
@@ -37,7 +40,7 @@ debug: wordmatic
 test: clean
 test: FLAGS += -D_DEBUG -g
 test: LNFLAGS += -D_DEBUG -g
-test: $(TBIN)/trie.test
+test: $(TBIN)/avl.test #$(TBIN)/trie.test
 
 
 clean:
@@ -55,3 +58,6 @@ $(ODIR)/%.o: $(TDIR)/%.c
 
 $(TBIN)/trie.test: $(OBJECTSPATH) $(ODIR)/trie.test.o
 	$(CC) $(LNFLAGS) $(OBJECTSPATH) $(ODIR)/trie.test.o $(LNLIBS) -o $(TBIN)/trie.test
+
+$(TBIN)/avl.test: $(OBJECTSPATH) $(ODIR)/avl.test.o
+	$(CC) $(LNFLAGS) $(OBJECTSPATH) $(ODIR)/avl.test.o $(LNLIBS) -o $(TBIN)/avl.test

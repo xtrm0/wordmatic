@@ -19,7 +19,7 @@ typedef struct SOLVER_DATA {
   int stop;
   int bestlen, bestval;
   /* Não vamos usar unions para simplificar o código:*/
-  queue * sol;
+  avl_node * sol;
   /*
     Tenta reduzir o espaco de procura, com base nas restricoes do problema
   */

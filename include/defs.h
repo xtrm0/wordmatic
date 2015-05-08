@@ -13,5 +13,9 @@ fprintf(stderr, "(0x45) Erro detetado: Memory Access Error!");      \
 exit(ENOMEM);                                                       \
 }
 
+#define ENDL "\r\n"
+
+#define max(a,b) ((a) > (b) ? (a) : (b))
+#define min(a,b) ((a) < (b) ? (a) : (b))
 
 #endif
