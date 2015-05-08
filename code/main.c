@@ -20,6 +20,7 @@ void wordmatic_solver(char * filename, trie_node * trie) {
   int tmp;
   int N;
   int variante, k;
+  int rc;
 
   fin = fopen(filename, "r");
   if (fin == NULL) {
@@ -35,6 +36,8 @@ void wordmatic_solver(char * filename, trie_node * trie) {
   fout = fopen(outfile, "w");
   if (fout == NULL) {
     printf("Erro: Nao foi possivel abrir \"%s\"!\n", outfile);
+    fclose(fin);
+    free(outfile);
     exit(ENOENT);
   }
 
@@ -42,17 +45,29 @@ void wordmatic_solver(char * filename, trie_node * trie) {
   while (N--) {
     mat = matrix_init();
     fscanf(fin, "%d %d", &variante, &k);
-    //TODO: test errors
-    if (read_matrix(fin, mat)) {
 
+    if ((rc = read_matrix(fin, mat))==0) {
+      freopen(outfile, "w", fout);
+      fprintf(fout, "-1" ENDL ENDL);
+      fclose(fout);
+      fclose(fin);
+      free(outfile);
+      matrix_destroy(mat);
+      return;
     }
-
-    //TODO: print -1 in case of invalid k value
 
 #define shortcase(n, ...) case n:   \
     variante##n(fout, trie, mat, ##__VA_ARGS__); \
     break;
-    
+
+    if (variante == 1 || variante == 2 || variante == 4) {
+      if (k > rc) {
+        fprintf(fout, "-1" ENDL ENDL);
+        matrix_destroy(mat);
+        continue;
+      }
+    }
+
     switch(variante) {
       shortcase(1,k);
       shortcase(2,k);
@@ -62,8 +77,7 @@ void wordmatic_solver(char * filename, trie_node * trie) {
       shortcase(6,k);
     default:
       break;
-      fprintf(fout, "-1");
-      //TODO: print -1 in case of invalid O value
+      fprintf(fout, "-1" ENDL ENDL);
     }
 
     matrix_destroy(mat);
