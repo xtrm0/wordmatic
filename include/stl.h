@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include "defs.h"
 typedef struct ELEMENT_VAL {
-  char word[20];
-  char path[39];
+  char word[19];
+  char path[37];
   int len;
   int val;
 } element_val;

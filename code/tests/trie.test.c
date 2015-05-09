@@ -1,4 +1,4 @@
-#include "../include/trie.h"
+#include "../../include/trie.h"
 
 int main() {
   FILE *f;

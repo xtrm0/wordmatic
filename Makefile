@@ -8,8 +8,8 @@ CC = gcc
 IDIR=include
 ODIR=objects
 CDIR=code
-TDIR=tests
-TBIN=testsbin
+TDIR=$(CDIR)/tests
+TBIN=bin
 OBJECTS=trie.o matrix.o input_man.o solver.o stl.o avl.o
 OBJECTSPATH = $(patsubst %,$(ODIR)/%,$(OBJECTS))
 .PHONY: all clean debug
@@ -18,7 +18,7 @@ OBJECTSPATH = $(patsubst %,$(ODIR)/%,$(OBJECTS))
 all: wordmatic
 
 execall: wordmatic
-	find ../proj/aux/Prof_tests/Testes/ -name "*.puz" -exec sh -c "echo {}; /usr/bin/time -v ./wordmatic dictionaries/input.dic {}" \;
+	find ./tests/ -name "*.puz" -exec sh -c "echo {}; /usr/bin/time -v ./wordmatic dictionaries/input.dic {}" \;
 
 drun: debug
 	./wordmatic
