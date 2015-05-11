@@ -82,7 +82,10 @@ void wordmatic_solver(char * filename, trie_node * trie) {
 
     matrix_destroy(mat);
   }
+  
   fclose(fout);
+  fclose(fin);
+  free(outfile);
 }
 
 int main(int argc, char ** argv) {

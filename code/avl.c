@@ -15,8 +15,8 @@ avl_node * avl_newnode(char * w, char *p, int len, int val) {
 
 void avl_destroy(avl_node * l) {
   if (l==NULL) return;
-  free(l->l);
-  free(l->r);
+  avl_destroy(l->l);
+  avl_destroy(l->r);
   ev_destroy(l->v);
   free(l);
 }
