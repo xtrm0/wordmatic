@@ -20,6 +20,10 @@ all: wordmatic
 execall: wordmatic
 	find ./tests/ -name "*.puz" -exec sh -c "echo {}; /usr/bin/time -v ./wordmatic dictionaries/input.dic {}" \;
 
+testall: wordmatic
+	find ./tests/ -name "*.puz" -exec sh -c "echo {}; /usr/bin/time -v ./verifwrdmtc01 dictionaries/input.dic {}" \;
+
+
 drun: debug
 	./wordmatic
 
