@@ -11,21 +11,29 @@
   O valor seguinte indica um ponteiro para a HEADER do elf. Na qual obviamente não está nenhum trie armazenada
   Assim, utilizamos este valor para evitar dar algum valor às folhas, e diminuir o tamanho de trie
 */
-#define TRIE_NODE_ASSIGNED (void *) 0x00000001
+#define BM_ENDNODE (1<<0)
+#define BM_FREE (1<<1)
 
 #define TRIE_START_CHAR 'a'
 #define TRIE_END_CHAR   'z'
 #define SC TRIE_START_CHAR
+typedef char int8;
 
 typedef struct TRIE_NODE {
-  int endnode;
-  struct TRIE_NODE *prox[TRIE_END_CHAR-TRIE_START_CHAR+1];
+  int8 bitmask; /* Defined as BM_XXXXX, bitmask bit 0 means endnode, bit 1 means should be free or not*/
+  int8 len;
+  char * val;
+  struct TRIE_NODE * prox;
+  struct TRIE_NODE * son;
 } trie_node;
 
 /*
   This iterator purpose is to let the user agnostic about wheter we are using a trie or a radix tree
  */
-typedef trie_node * trie_iterator;
+typedef struct TRIE_ITERATOR {
+  trie_node * node;
+  int8 pos;
+} trie_iterator;
 
 trie_node * trie_init();
 

@@ -44,7 +44,7 @@ debug: wordmatic
 test: clean
 test: FLAGS += -D_DEBUG -g
 test: LNFLAGS += -D_DEBUG -g
-test: $(TBIN)/avl.test #$(TBIN)/trie.test
+test: $(TBIN)/avl.test $(TBIN)/trie.test
 
 
 clean:
