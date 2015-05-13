@@ -13,6 +13,9 @@ fprintf(stderr, "(0x45) Erro detetado: Memory Access Error!");      \
 exit(ENOMEM);                                                       \
 }
 
+/* Maximum lenght for a word */
+#define MAXLEN 18
+
 #define ENDL "\r\n"
 
 #define max(a,b) ((a) > (b) ? (a) : (b))

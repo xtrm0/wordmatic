@@ -55,7 +55,7 @@ int it_travel(trie_iterator * it, char c);
 
 int it_travel_s(trie_iterator * it, char * c);
 
-int it_isendnode(trie_iterator * it);
+int it_isendnode(trie_iterator it);
 
 
 

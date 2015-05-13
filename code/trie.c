@@ -58,11 +58,11 @@ trie_node * trie_insert(trie_node * root, char * word) {
     word++;
   }
   if (it.pos + 1 == it.node->len) {
-    it.node->endnode = 1;
+    it.node->bitmask |= BM_ENDNODE;
     return root;
   } else {
     trie_split_node(it.node, it.pos + 1);
-    it.node->endnode = 1;
+    it.node->bitmask |= BM_ENDNODE;
     return root;
   }
   return root;
@@ -72,12 +72,17 @@ trie_node * trie_insert(trie_node * root, char * word) {
 int trie_search(trie_node * root, char * word) {
   trie_iterator it = it_init(root);
   if (it_travel_s(&it, word)) return 0;
-  return (it_isendnode(&it));
+  return (it_isendnode(it));
 }
 
-/*TODO: */
+
 void trie_destroy(trie_node * root) {
-  /*Pass*/
+  if (root==NULL) return;
+  trie_destroy(root->prox);
+  trie_destroy(root->son);
+  if (root->bitmask & BM_FREE)
+    free(root->val);
+  free(root);
 }
 
 
@@ -123,8 +128,8 @@ int it_travel_s(trie_iterator * it, char *c) {
   return 0;
 }
 
-int it_isendnode(trie_iterator * it) {
-  if (it->node->len == (it->pos + 1) && it->node->endnode) {
+int it_isendnode(trie_iterator it) {
+  if (it.node->len == (it.pos + 1) && (it.node->bitmask & BM_ENDNODE)) {
     return 1;
   } else {
     return 0;

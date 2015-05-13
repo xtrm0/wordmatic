@@ -22,7 +22,7 @@ void dfs(solver_data * s, trie_iterator it, int i, int j, int len, int val, int 
   s->path[2*(depth+1)]=0;
 
 
-  if (it_isendnode(&it))
+  if (it_isendnode(it))
     if(!(s->test_solution) || s->test_solution(s,len,val))
       s->add_solution(s,len,val);
 

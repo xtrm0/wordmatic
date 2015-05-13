@@ -20,7 +20,7 @@ void wordmatic_solver(char * filename, trie_node * trie) {
   int tmp;
   int N;
   int variante, k;
-  int rc;
+  int maxlen, maxval;
 
   fin = fopen(filename, "r");
   if (fin == NULL) {
@@ -45,28 +45,17 @@ void wordmatic_solver(char * filename, trie_node * trie) {
   while (N--) {
     mat = matrix_init();
     fscanf(fin, "%d %d", &variante, &k);
+    read_matrix(fin, mat, &maxlen, &maxval);
 
-    if ((rc = read_matrix(fin, mat))==0) {
-      freopen(outfile, "w", fout);
+    if (!isvalid_mode(variante, k, maxlen, maxval)) {
       fprintf(fout, "-1" ENDL ENDL);
-      fclose(fout);
-      fclose(fin);
-      free(outfile);
       matrix_destroy(mat);
-      return;
+      continue;
     }
 
 #define shortcase(n, ...) case n:   \
     variante##n(fout, trie, mat, ##__VA_ARGS__); \
     break;
-
-    if (variante == 1 || variante == 2 || variante == 4) {
-      if (k > rc) {
-        fprintf(fout, "-1" ENDL ENDL);
-        matrix_destroy(mat);
-        continue;
-      }
-    }
 
     switch(variante) {
       shortcase(1,k);
@@ -75,14 +64,11 @@ void wordmatic_solver(char * filename, trie_node * trie) {
       shortcase(4);
       shortcase(5,k);
       shortcase(6,k);
-    default:
-      break;
-      fprintf(fout, "-1" ENDL ENDL);
     }
 
     matrix_destroy(mat);
   }
-  
+
   fclose(fout);
   fclose(fin);
   free(outfile);
@@ -91,6 +77,7 @@ void wordmatic_solver(char * filename, trie_node * trie) {
 int main(int argc, char ** argv) {
   trie_node * trie;
   int tmp;
+  int lens[MAXLEN+2];
   if (argc==2 && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--h") == 0 || strcmp(argv[1], "--help") == 0)) {
     usage_print(0); //in this case we should not return error
   }
@@ -110,9 +97,9 @@ int main(int argc, char ** argv) {
     usage_print(EINVAL);
   }
 
-
+  calculate_needed_lenghts(argv[2], lens);
   //Reads data from dictionary file and creates the trie:
-  trie = new_trie_from_dictionary(argv[1]);
+  trie = new_trie_from_dictionary(argv[1], lens);
 
   //Proceses matrix and instruction input
   wordmatic_solver(argv[2], trie);

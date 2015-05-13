@@ -1,7 +1,7 @@
 
-FLAGS=-O3 -c -Wall
+FLAGS=-O3 -Ofast -c -Wall
 #-pedantic -ansi
-LNFLAGS=-O3 -Wall
+LNFLAGS=-O3 -Ofast -Wall
 #-pedantic -ansi
 LNLIBS=
 CC = gcc
@@ -18,10 +18,24 @@ OBJECTSPATH = $(patsubst %,$(ODIR)/%,$(OBJECTS))
 all: wordmatic
 
 execall: wordmatic
+		find ./tests/ -name "*.puz" -exec sh -c "echo {}; ./wordmatic dictionaries/input.dic {}" \;
+
+execall-time: wordmatic
 	find ./tests/ -name "*.puz" -exec sh -c "echo {}; /usr/bin/time -v ./wordmatic dictionaries/input.dic {}" \;
 
+execall-valgrind: wordmatic
+	find ./tests/ -name "*.puz" -exec sh -c "echo {}; valgrind --leak-check=full ./wordmatic dictionaries/input.dic {}" \;
+
+
 testall: wordmatic
-	find ./tests/ -name "*.puz" -exec sh -c "echo {}; /usr/bin/time -v ./verifwrdmtc01 dictionaries/input.dic {}" \;
+	find ./tests/ -name "*.puz" -exec sh -c "./verifwrdmtc01 dictionaries/input.dic {}" \;
+
+testall-time: wordmatic
+		find ./tests/ -name "*.puz" -exec sh -c "echo {}; /usr/bin/time -v ./verifwrdmtc01 dictionaries/input.dic {}" \;
+
+testall-valgrind: wordmatic
+		find ./tests/ -name "*.puz" -exec sh -c "echo {}; valgrind --leak-check=full ./verifwrdmtc01 dictionaries/input.dic {}" \;
+
 
 
 drun: debug
