@@ -16,7 +16,7 @@ exit(ENOMEM);                                                       \
 /* Maximum lenght for a word */
 #define MAXLEN 18
 
-#define ENDL "\r\n"
+#define ENDL "\n"
 
 #define max(a,b) ((a) > (b) ? (a) : (b))
 #define min(a,b) ((a) < (b) ? (a) : (b))

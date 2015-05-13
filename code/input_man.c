@@ -10,7 +10,7 @@ int isvalid_mode(int mode, int k, int maxlen, int maxval) {
   return 1;
 }
 
-void calculate_needed_lenghts(char * filename, int * lens) {
+void calculate_needed_lenghts(char * filename, int * lens, FILE * fout) {
   int i;
   int mode, k;
   int maxlen, maxval;
@@ -23,6 +23,7 @@ void calculate_needed_lenghts(char * filename, int * lens) {
   fin = fopen(filename, "r");
   if (fin==NULL) {
     printf("Erro: Nao foi possivel abrir \"%s\"!\n", filename);
+    fprintf(fout, "-1" ENDL ENDL);
     exit(ENOENT);
   }
 
@@ -54,7 +55,7 @@ void calculate_needed_lenghts(char * filename, int * lens) {
   fclose(fin);
 }
 
-trie_node * new_trie_from_dictionary(char * filename, int * lens) {
+trie_node * new_trie_from_dictionary(char * filename, int * lens, FILE * fout) {
   trie_node * trie;
   FILE * fin;
   char read[MAXLEN+2];
@@ -63,6 +64,7 @@ trie_node * new_trie_from_dictionary(char * filename, int * lens) {
   fin = fopen(filename, "r");
   if (fin==NULL) {
     printf("Erro: Nao foi possivel abrir \"%s\"!\n", filename);
+    fprintf(fout, "-1" ENDL ENDL);
     exit(ENOENT);
   }
 

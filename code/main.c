@@ -12,12 +12,9 @@ void usage_print(int err) {
   exit(err);
 }
 
-void wordmatic_solver(char * filename, trie_node * trie) {
+void wordmatic_solver(char * filename, trie_node * trie, FILE * fout) {
   FILE * fin;
-  FILE * fout;
   matrix * mat;
-  char * outfile;
-  int tmp;
   int N;
   int variante, k;
   int maxlen, maxval;
@@ -25,19 +22,7 @@ void wordmatic_solver(char * filename, trie_node * trie) {
   fin = fopen(filename, "r");
   if (fin == NULL) {
     printf("Erro: Nao foi possivel abrir \"%s\"!\n", filename);
-    exit(ENOENT);
-  }
-
-  tmp = strlen(filename);
-  outfile = malloc((tmp+1)*sizeof(char));
-  TESTMEM(outfile);
-  strcpy(outfile,filename);
-  strcpy(outfile+tmp-3, "sol");
-  fout = fopen(outfile, "w");
-  if (fout == NULL) {
-    printf("Erro: Nao foi possivel abrir \"%s\"!\n", outfile);
-    fclose(fin);
-    free(outfile);
+    fprintf(fout, "-1" ENDL ENDL);
     exit(ENOENT);
   }
 
@@ -68,26 +53,20 @@ void wordmatic_solver(char * filename, trie_node * trie) {
 
     matrix_destroy(mat);
   }
-
-  fclose(fout);
   fclose(fin);
-  free(outfile);
 }
 
 int main(int argc, char ** argv) {
+  FILE * fout;
   trie_node * trie;
   int tmp;
+  char * outfile;
   int lens[MAXLEN+2];
+
   if (argc==2 && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--h") == 0 || strcmp(argv[1], "--help") == 0)) {
     usage_print(0); //in this case we should not return error
   }
   if (argc!=3) {
-    usage_print(EINVAL);
-  }
-
-  tmp = strlen(argv[1]);
-  if (tmp >= 4 && strcmp(argv[1] + tmp - 4, ".dic") != 0) {
-    printf("Dictionary filename must end in .dic\n");
     usage_print(EINVAL);
   }
 
@@ -97,15 +76,37 @@ int main(int argc, char ** argv) {
     usage_print(EINVAL);
   }
 
-  calculate_needed_lenghts(argv[2], lens);
+  /* Abre o ficheiro de saída */
+  outfile = malloc((tmp+1)*sizeof(char));
+  TESTMEM(outfile);
+  strcpy(outfile,argv[2]);
+  strcpy(outfile+tmp-3, "sol");
+  fout = fopen(outfile, "w");
+  if (fout == NULL) {
+    printf("Erro: Nao foi possivel abrir \"%s\"!\n", outfile);
+    free(outfile);
+    exit(ENOENT);
+  }
+
+  tmp = strlen(argv[1]);
+  if (tmp >= 4 && strcmp(argv[1] + tmp - 4, ".dic") != 0) {
+    printf("Dictionary filename must end in .dic\n");
+    fprintf(fout, "-1" ENDL ENDL);
+    usage_print(EINVAL);
+  }
+
+
+
+  calculate_needed_lenghts(argv[2], lens, fout);
   //Reads data from dictionary file and creates the trie:
-  trie = new_trie_from_dictionary(argv[1], lens);
+  trie = new_trie_from_dictionary(argv[1], lens, fout);
 
   //Proceses matrix and instruction input
-  wordmatic_solver(argv[2], trie);
+  wordmatic_solver(argv[2], trie, fout);
 
   //free stuff
   trie_destroy(trie);
-
+  fclose(fout);
+  free(outfile);
   return 0;
 }
