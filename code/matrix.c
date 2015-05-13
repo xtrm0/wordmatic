@@ -17,13 +17,13 @@ void read_matrix(FILE * fin, matrix * mat, int * maxlenght, int * maxval) {
   memset(mat, 0, sizeof(matrix));
   for (i=0; i<MATRIX_SIDE; i++) {
     for (j=0; j<MATRIX_SIDE; j++) {
-      fscanf(fin, "%s", mat->M[i][j]);
+      dummy_test(fscanf(fin, "%s", mat->M[i][j]));
       *maxlenght += strlen(mat->M[i][j]);
     }
   }
   for (i=0; i<MATRIX_SIDE; i++) {
     for (j=0; j<MATRIX_SIDE; j++) {
-      fscanf(fin, "%d", &(mat->val[i][j]));
+      dummy_test(fscanf(fin, "%d", &(mat->val[i][j])));
       *maxval += mat->val[i][j];
     }
   }

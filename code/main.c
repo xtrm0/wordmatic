@@ -26,10 +26,10 @@ void wordmatic_solver(char * filename, trie_node * trie, FILE * fout) {
     exit(ENOENT);
   }
 
-  fscanf(fin, "%d", &N);
+  dummy_test(fscanf(fin, "%d", &N));
   while (N--) {
     mat = matrix_init();
-    fscanf(fin, "%d %d", &variante, &k);
+    dummy_test(fscanf(fin, "%d %d", &variante, &k));
     read_matrix(fin, mat, &maxlen, &maxval);
 
     if (!isvalid_mode(variante, k, maxlen, maxval)) {

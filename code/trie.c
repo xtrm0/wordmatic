@@ -9,8 +9,11 @@ trie_node * trie_init() {
   return trie;
 }
 
-/* Creates a new endnode */
-trie_node * trie_new_node(char * word) {
+/*
+@private
+  Creates a new endnode
+*/
+trie_node * _trie_new_node(char * word) {
   trie_node * trie = NULL;
   trie = malloc(sizeof(trie_node));
   TESTMEM(trie);
@@ -22,8 +25,11 @@ trie_node * trie_new_node(char * word) {
   return trie;
 }
 
-/* Splits a node into 2, at position offset */
-void trie_split_node(trie_node * old, int8 offset) {
+/*
+@private
+  Splits a node into 2, at position offset
+*/
+void _trie_split_node(trie_node * old, int8 offset) {
   trie_node * newn = NULL;
   newn = malloc(sizeof(trie_node));
   TESTMEM(newn);
@@ -45,13 +51,13 @@ trie_node * trie_insert(trie_node * root, char * word) {
   while(*word) {
     if (it_travel(&it, *word)) {
       if (it.pos + 1 == it.node->len) {
-        aux = trie_new_node(word);
+        aux = _trie_new_node(word);
         aux->prox = it.node->son;
         it.node->son = aux;
         return root;
       } else {
-        trie_split_node(it.node, it.pos + 1);
-        it.node->son->prox = trie_new_node(word);
+        _trie_split_node(it.node, it.pos + 1);
+        it.node->son->prox = _trie_new_node(word);
         return root;
       }
     }
@@ -61,7 +67,7 @@ trie_node * trie_insert(trie_node * root, char * word) {
     it.node->bitmask |= BM_ENDNODE;
     return root;
   } else {
-    trie_split_node(it.node, it.pos + 1);
+    _trie_split_node(it.node, it.pos + 1);
     it.node->bitmask |= BM_ENDNODE;
     return root;
   }

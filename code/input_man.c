@@ -27,9 +27,9 @@ void calculate_needed_lenghts(char * filename, int * lens, FILE * fout) {
     exit(ENOENT);
   }
 
-  fscanf(fin, "%d", &N);
+  dummy_test(fscanf(fin, "%d", &N));
   while (N--) {
-    fscanf(fin, "%d %d", &mode, &k);
+    dummy_test(fscanf(fin, "%d %d", &mode, &k));
     read_matrix(fin, &M, &maxlen, &maxval);
     if (isvalid_mode(mode,k,maxlen,maxval)==0) continue;
     switch (mode) {

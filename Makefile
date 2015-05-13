@@ -1,7 +1,7 @@
 
-FLAGS=-O3 -Ofast -c -Wall
+FLAGS=-O3 -Ofast -c -Wall -Wno-strict-overflow -Wno-unused-result
 #-pedantic -ansi
-LNFLAGS=-O3 -Ofast -Wall
+LNFLAGS=-O3 -Ofast -Wall -Wno-strict-overflow -Wno-unused-result
 #-pedantic -ansi
 LNLIBS=
 CC = gcc
@@ -36,6 +36,13 @@ testall-time: wordmatic
 testall-valgrind: wordmatic
 		find ./tests/ -name "*.puz" -exec sh -c "echo {}; valgrind --leak-check=full ./verifwrdmtc01 dictionaries/input.dic {}" \;
 
+createzip: clean
+	rm sendtomoo.zip
+	zip -r sendtomoo.zip Makefile
+	zip -r sendtomoo.zip include
+	zip -r sendtomoo.zip code
+	zip -r sendtomoo.zip objects
+	zip -r sendtomoo.zip bin
 
 
 drun: debug

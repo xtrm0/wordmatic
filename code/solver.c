@@ -38,16 +38,50 @@ void dfs(solver_data * s, trie_iterator it, int i, int j, int len, int val, int 
   return;
 }
 
+
+/*
+@private
+  Prunning functions
+*/
 int _prune_size_gt_k(solver_data * s, int len, int val) {
   if (s->k < len) return 1;
   return 0;
 }
+int _prune5(solver_data* s, int len, int val) {
+  if (s->k < len) return 1;
+  return 0;
+}
+int _prune6(solver_data* s, int len, int val) {
+  if (s->k < val) return 1;
+  if (s->bestlen < len) return 1;
+  return 0;
+}
 
+/*
+@private
+  Comparator functions
+*/
 int _size_eq_k(solver_data* s, int len, int val) {
   if (s->k == len) return 1;
   return 0;
 }
+int _comp4(solver_data* s, int len, int val) {
+  if (s->bestlen < len) return 1;
+  return 0;
+}
+int _comp5(solver_data* s, int len, int val) {
+  if (s->bestval < val && s->k == len) return 1;
+  return 0;
+}
+int _comp6(solver_data* s, int len, int val) {
+  if (s->bestlen > len && s->k == val) return 1;
+  return 0;
+}
 
+/*
+@private
+  Solution adder functions
+*/
 int _solution_best(solver_data* s, int len, int val) {
   avl_destroy(s->sol);
   s->bestlen = len;
@@ -65,6 +99,10 @@ int _solution_all(solver_data* s, int len, int val) {
   return 0;
 }
 
+/*
+@private
+  Solution printer functions
+*/
 void _print_solution_single_len(FILE * fout, element_val * ans) {
   char * aux;
   ans->word[ans->len]=0;
@@ -76,7 +114,6 @@ void _print_solution_single_len(FILE * fout, element_val * ans) {
   }
   fprintf(fout, "%d" ENDL, ans->len);
 }
-
 void _print_solution_single_val(FILE * fout, element_val * ans) {
   char * aux;
   fprintf(fout, "%s ", ans->word);
@@ -87,7 +124,6 @@ void _print_solution_single_val(FILE * fout, element_val * ans) {
   }
   fprintf(fout, "%d" ENDL, ans->val);
 }
-
 void _print_solution_all_len(FILE * fout, avl_node * root, int * tot) {
   if (root==NULL) return;
   _print_solution_all_len(fout, root->l, tot);
@@ -96,29 +132,9 @@ void _print_solution_all_len(FILE * fout, avl_node * root, int * tot) {
   _print_solution_all_len(fout, root->r, tot);
 }
 
-int _prune5(solver_data* s, int len, int val) {
-  if (s->k < len) return 1;
-  return 0;
-}
 
-int _prune6(solver_data* s, int len, int val) {
-  if (s->k < val) return 1; /* TODO: Ver se os inteiros da matriz sao todos positivos [PERGUNTAR AO PROF OU DESCOBRIR NO ENUCIADO]*/
-  if (s->bestlen < len) return 1;
-  return 0;
-}
 
-int _comp4(solver_data* s, int len, int val) {
-  if (s->bestlen < len) return 1;
-  return 0;
-}
-int _comp5(solver_data* s, int len, int val) {
-  if (s->bestval < val && s->k == len) return 1;
-  return 0;
-}
-int _comp6(solver_data* s, int len, int val) {
-  if (s->bestlen > len && s->k == val) return 1;
-  return 0;
-}
+
 
 void dfs_caller(solver_data * s, trie_node * trie) {
   int i, j;

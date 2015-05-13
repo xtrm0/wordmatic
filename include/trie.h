@@ -1,16 +1,14 @@
 #ifndef TRIE_H
 #define TRIE_H
-
-//TODO: WE NEED TO IMPLEMENT A SUPER EFICIENT RADIX TREE HERE
+/*
+  This code contains the implementation of a self compressing trie (radix tree), highly otimized for memory
+  It should always be faster than a full prefix hashmap that uses about the same memory.
+*/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include "defs.h"
 
-/*
-  O valor seguinte indica um ponteiro para a HEADER do elf. Na qual obviamente não está nenhum trie armazenada
-  Assim, utilizamos este valor para evitar dar algum valor às folhas, e diminuir o tamanho de trie
-*/
 #define BM_ENDNODE (1<<0)
 #define BM_FREE (1<<1)
 
@@ -35,31 +33,47 @@ typedef struct TRIE_ITERATOR {
   int8 pos;
 } trie_iterator;
 
+/*
+  Creates a new trie
+*/
 trie_node * trie_init();
-
+/*
+  Inserts a new node into the trie
+*/
 trie_node * trie_insert(trie_node * root, char * word);
-
+/*
+  Checks whether a given word is inside the trie
+  Returns non-zero if word inside the trie
+*/
 int trie_search(trie_node * root, char * word);
-
+/*
+  Recursively free's a trie
+*/
 void trie_destroy(trie_node * root);
 
 
-
+/*
+  Creates a new trie_iterator
+*/
 trie_iterator it_init(trie_node * root);
 
 /*
-  Sets the given trie iterator to point to char if available and return 0
-  If not available, no change happens to the iterator, and this function returns 1
+  Sets the given trie iterator to point to char if found and return 0
+  If not found, no change happens to the iterator, and this function returns 1
 */
 int it_travel(trie_iterator * it, char c);
 
+/*
+  Make the iterator travel trough strings c, or until a non match is found
+   (the iterator is left on the last valid state before the non match)
+*/
 int it_travel_s(trie_iterator * it, char * c);
 
+/*
+  Returns 1 if the iterator is at the end of a word in the trie.
+  Returns 0 otherwise
+*/
 int it_isendnode(trie_iterator it);
-
-
-
-
 
 
 #endif

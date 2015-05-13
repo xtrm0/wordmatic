@@ -26,7 +26,7 @@ int main() {
   s1[5]='o';
   printf("%d\n", trie_search(root, s1));
   trie_destroy(root);
-  
+
   printf("Running long dictionary insert test\n");
   root = trie_init();
   f= fopen("/home/xtrm0/repo/school/aed/proj/dictionaries/input.dic", "r");
@@ -44,7 +44,7 @@ int main() {
     }
   }
   printf("done! press any...\n");
-  scanf("%d", s1);
+  scanf("%c", s1);
   trie_destroy(root);
 
 
