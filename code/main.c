@@ -64,7 +64,7 @@ int main(int argc, char ** argv) {
   int lens[MAXLEN+2];
 
   if (argc==2 && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--h") == 0 || strcmp(argv[1], "--help") == 0)) {
-    usage_print(0); //in this case we should not return error
+    usage_print(0); /*in this case we should not return error*/
   }
   if (argc!=3) {
     usage_print(EINVAL);
@@ -98,13 +98,13 @@ int main(int argc, char ** argv) {
 
 
   calculate_needed_lenghts(argv[2], lens, fout);
-  //Reads data from dictionary file and creates the trie:
+  /*Reads data from dictionary file and creates the trie:*/
   trie = new_trie_from_dictionary(argv[1], lens, fout);
 
-  //Proceses matrix and instruction input
+  /*Proceses matrix and instruction input*/
   wordmatic_solver(argv[2], trie, fout);
 
-  //free stuff
+  /*free stuff*/
   trie_destroy(trie);
   fclose(fout);
   free(outfile);

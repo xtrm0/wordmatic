@@ -40,7 +40,7 @@ trie_node * trie_init();
 /*
   Inserts a new node into the trie
 */
-trie_node * trie_insert(trie_node * root, char * word);
+void trie_insert(trie_node * root, char * word);
 /*
   Checks whether a given word is inside the trie
   Returns non-zero if word inside the trie

@@ -72,14 +72,14 @@ trie_node * new_trie_from_dictionary(char * filename, int * lens, FILE * fout) {
   while ((c=fgetc(fin)) != EOF) {
     if (isspace(c)) {
       if (i>0) {
-        if (lens[i]) { //so queremos strings com estes tamanhos
+        if (lens[i]) { /*so queremos strings com estes tamanhos*/
           read[i]='\0';
           trie_insert(trie, read);
         }
       }
       i=0;
     } else {
-      if (i<=MAXLEN) { //to avoid buffer overflow
+      if (i<=MAXLEN) { /*to avoid buffer overflow*/
         read[i++] = c;
       }
     }

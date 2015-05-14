@@ -44,7 +44,7 @@ void _trie_split_node(trie_node * old, int8 offset) {
   old->son = newn;
 }
 
-trie_node * trie_insert(trie_node * root, char * word) {
+void trie_insert(trie_node * root, char * word) {
   trie_iterator it;
   trie_node * aux;
   it = it_init(root);
@@ -54,24 +54,20 @@ trie_node * trie_insert(trie_node * root, char * word) {
         aux = _trie_new_node(word);
         aux->prox = it.node->son;
         it.node->son = aux;
-        return root;
+        return;
       } else {
         _trie_split_node(it.node, it.pos + 1);
         it.node->son->prox = _trie_new_node(word);
-        return root;
+        return;
       }
     }
     word++;
   }
-  if (it.pos + 1 == it.node->len) {
-    it.node->bitmask |= BM_ENDNODE;
-    return root;
-  } else {
+  
+  if (it.pos + 1 != it.node->len)
     _trie_split_node(it.node, it.pos + 1);
-    it.node->bitmask |= BM_ENDNODE;
-    return root;
-  }
-  return root;
+  it.node->bitmask |= BM_ENDNODE;
+  return;
 }
 
 
