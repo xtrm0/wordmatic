@@ -11,10 +11,11 @@ int isvalid_mode(int mode, int k, int maxlen, int maxval);
 
 /*
   Checks what are the lenghts of the words that we should insert into the trie.
+  (also marks used characters)
 
   Complexity: linear on the number of bytes in the .puz file
 */
-void calculate_needed_lenghts(char * filename, int * lens, FILE * fout);
+void calculate_needed_lenghts(char * filename, int * lens, int * user_chars, FILE * fout);
 
 /*
   Reads a text file and returns a new trie made of its words
@@ -25,7 +26,7 @@ void calculate_needed_lenghts(char * filename, int * lens, FILE * fout);
     N is the number of characters in the dictionary
     the complexity highly depends on the overlapping of words in the dictionary, and the
 */
-trie_node * new_trie_from_dictionary(char * filename, int * lens, FILE * fout);
+trie_node * new_trie_from_dictionary(char * filename, int * lens, int * used_chars, FILE * fout);
 
 
 
