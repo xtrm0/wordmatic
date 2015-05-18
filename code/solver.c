@@ -1,6 +1,33 @@
+/******************************************************************************
+ * File Name:   solver.c
+ * Author:      Afonso / Osvaldo
+ * Revision:
+ * NAME:        WordMatic - IST/AED - 2015 2º Sem
+ * SYNOPSIS:    #include "solver.h"
+ * DESCRIPTION: as funções e a estrutura necessárias para encontrar a solução.
+ *              DFS e variantes do problema.
+ * DIAGNOSTICS: tested
+ *****************************************************************************/
+
 #include "../include/solver.h"
 
-
+/******************************************************************************
+ * dfs()
+ *
+ * Arguments:   s
+ *              it
+ *              i
+ *              j
+ *              len
+ *              val
+ *              depth
+ * Returns:
+ * Side-Effects:
+ * Description:  Performs a dfs on the matrix with the settings previously set
+ *               on solver_init to s.
+ *               This dfs has a prunning function, a testing function and an
+ *               adding function depending on the game mode.
+ *****************************************************************************/
 void dfs(solver_data * s, trie_iterator it, int i, int j, int len, int val, int depth) {
   int x,y;
   char *c;
