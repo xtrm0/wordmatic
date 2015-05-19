@@ -17,9 +17,13 @@ OBJECTSPATH = $(patsubst %,$(ODIR)/%,$(OBJECTS))
 
 all: wordmatic
 
+#gera novos ficheiros de testes:
+gentests: clean
+	for i in `seq 1 200`; do python ./tests/random/gen.py > ./tests/random/$${i}.puz; done
+
 #executa para todos os testes em ./tests/
 execall: wordmatic
-		find ./tests/ -name "*.puz" -exec sh -c "echo {}; ./wordmatic dictionaries/input.dic {}" \;
+	find ./tests/ -name "*.puz" -exec sh -c "echo {}; ./wordmatic dictionaries/input.dic {}" \;
 
 #mede o tempo e o tamanho da heap para todos os testes em ./tests/
 execall-time: wordmatic
@@ -31,13 +35,13 @@ execall-valgrind: wordmatic
 
 #(para a solucao oficial) executa para todos os testes em ./tests/
 testall: wordmatic
-	find ./tests/ -name "*.puz" -exec sh -c "./verifwrdmtc01 dictionaries/input.dic {}" \;
+	find ./tests/ -name "*.puz" -exec sh -c "echo {}; ./verifwrdmtc01 dictionaries/input.dic {}" \;
 #(para a solucao oficial) mede o tempo e o tamanho da heap para todos os testes em ./tests/
 testall-time: wordmatic
-		find ./tests/ -name "*.puz" -exec sh -c "echo {}; /usr/bin/time -v ./verifwrdmtc01 dictionaries/input.dic {}" \;
+	find ./tests/ -name "*.puz" -exec sh -c "echo {}; /usr/bin/time -v ./verifwrdmtc01 dictionaries/input.dic {}" \;
 #(para a solucao oficial) mede a utilizacao exata de memoria para todos os testes em ./tests/
 testall-valgrind: wordmatic
-		find ./tests/ -name "*.puz" -exec sh -c "echo {}; valgrind --leak-check=full ./verifwrdmtc01 dictionaries/input.dic {}" \;
+	find ./tests/ -name "*.puz" -exec sh -c "echo {}; valgrind --leak-check=full ./verifwrdmtc01 dictionaries/input.dic {}" \;
 
 #cria um zip do projeto
 createzip: clean
@@ -78,7 +82,7 @@ test: $(TBIN)/avl.test $(TBIN)/trie.test
 
 #limpa todos os objetos e executaveis
 clean:
-	rm -f $(ODIR)/*.o wordmatic $(TBIN)/*
+	rm -f $(ODIR)/*.o wordmatic $(TBIN)/* tests/random/*.puz tests/random/*.sol
 
 #rules to link wordmatic
 wordmatic: $(OBJECTSPATH) $(ODIR)/main.o
