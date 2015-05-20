@@ -1,4 +1,4 @@
-/******************************************************************************
+  /******************************************************************************
  * File Name:   solver.c
  * Author:      Afonso / Osvaldo
  * Revision:
@@ -66,10 +66,17 @@ void dfs(solver_data * s, trie_iterator it, int i, int j, int len, int val, int 
 }
 
 
-/*
-@private
-  Prunning functions
-*/
+/******************************************************************************
+ * _prune_size_gt_k()
+ * _prune5()
+ * _prune6()
+ *
+ * Arguments:   s, len, val
+ * Returns:
+ * Side-Effects:
+ * Description:  @private
+ *                  Prunning functions
+ *****************************************************************************/
 int _prune_size_gt_k(solver_data * s, int len, int val) {
   if (s->k < len) return 1;
   return 0;
@@ -84,10 +91,18 @@ int _prune6(solver_data* s, int len, int val) {
   return 0;
 }
 
-/*
-@private
-  Comparator functions
-*/
+/******************************************************************************
+ * _size_eq_k()
+ * _comp4()
+ * _comp5()
+ * _comp6()
+ *
+ * Arguments:   s, len, val
+ * Returns:
+ * Side-Effects:
+ * Description:  @private
+ *                  Comparator functions
+ *****************************************************************************/
 int _size_eq_k(solver_data* s, int len, int val) {
   if (s->k == len) return 1;
   return 0;
@@ -105,10 +120,17 @@ int _comp6(solver_data* s, int len, int val) {
   return 0;
 }
 
-/*
-@private
-  Solution adder functions
-*/
+/******************************************************************************
+ * _solution_best()
+ * _solution_single()
+ * _solution_all()
+ *
+ * Arguments:   s, len, val
+ * Returns:
+ * Side-Effects:
+ * Description:  @private
+ *                  Solution adder functions
+ *****************************************************************************/
 int _solution_best(solver_data* s, int len, int val) {
   avl_destroy(s->sol);
   s->bestlen = len;
@@ -126,10 +148,17 @@ int _solution_all(solver_data* s, int len, int val) {
   return 0;
 }
 
-/*
-@private
-  Solution printer functions
-*/
+/******************************************************************************
+ * _print_solution_single_len()
+ * _print_solution_single_val()
+ * _print_solution_all_len()
+ *
+ * Arguments:   fout, ans
+ * Returns:
+ * Side-Effects:
+ * Description:  @private
+ *                  Solution printer functions
+ *****************************************************************************/
 void _print_solution_single_len(FILE * fout, element_val * ans) {
   char * aux;
   ans->word[ans->len]=0;
@@ -162,7 +191,14 @@ void _print_solution_all_len(FILE * fout, avl_node * root, int * tot) {
 
 
 
-
+/******************************************************************************
+ * dfs_caller()
+ *
+ * Arguments:   s, trie
+ * Returns:
+ * Side-Effects:
+ * Description:  This function calls the dfs for every cell on the game matrix
+ *****************************************************************************/
 void dfs_caller(solver_data * s, trie_node * trie) {
   int i, j;
   trie_iterator it;
@@ -175,6 +211,25 @@ void dfs_caller(solver_data * s, trie_node * trie) {
   }
 }
 
+
+/******************************************************************************
+ * variante1()
+ * variante2()
+ * variante3()
+ * variante4()
+ * variante5()
+ * variante6()
+ *
+ * Arguments:   fout, trie, matrix, k
+ * Returns:     void
+ * Side-Effects:
+ * Description:
+ *      All of the varianteX functions works in the following way,
+ *  depending on the game mode(X):
+ *      1 - set the solver according to the game mode
+ *      2 - call dfs_caller with the solver
+ *      3 - prints solution(s) according the game mode
+ *****************************************************************************/
 void variante1(FILE * fout, trie_node * trie, matrix * mat, int k) {
   solver_data * s = solver_init(mat, k, _prune_size_gt_k, _size_eq_k, _solution_single);
   dfs_caller(s, trie);
@@ -245,7 +300,14 @@ void variante6(FILE * fout, trie_node * trie, matrix * mat, int k) {
   solver_destroy(s);
 }
 
-
+/******************************************************************************
+ * solver_init()
+ *
+ * Arguments:   matrix, k, Prunning function, Comparator function, Solution adder function
+ * Returns:     void
+ * Side-Effects:
+ * Description:  Initializes a new solver
+ *****************************************************************************/
 solver_data * solver_init(matrix * mat, int k, int (*prune)(struct SOLVER_DATA*, int, int), int (*test_solution)(struct SOLVER_DATA*, int, int), int (*add_solution)(struct SOLVER_DATA*, int, int)) {
   solver_data * s = malloc(sizeof(solver_data));
   TESTMEM(s);
@@ -260,6 +322,15 @@ solver_data * solver_init(matrix * mat, int k, int (*prune)(struct SOLVER_DATA*,
   return s;
 }
 
+/******************************************************************************
+ * solver_restart()
+ *
+ * Arguments:   s
+ * Returns:     void
+ * Side-Effects:
+ * Description:  Resets a solver state to allow for a new dfs
+ *               (keeps the old solutions)
+ *****************************************************************************/
 void solver_restart(solver_data * s) {
   int i,j;
   memset(s->color, 0, sizeof(s->color));
@@ -271,6 +342,14 @@ void solver_restart(solver_data * s) {
   memset(s->path, 0, sizeof(s->path));
 }
 
+/******************************************************************************
+ * solver_destroy()
+ *
+ * Arguments:   s
+ * Returns:     void
+ * Side-Effects:
+ * Description:  Frees a solver and all of its solutions
+ *****************************************************************************/
 void solver_destroy(solver_data * s) {
   avl_destroy(s->sol);
   free(s);
