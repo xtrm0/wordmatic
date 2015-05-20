@@ -23,16 +23,16 @@ Just run make:
 
 Folder Structure:
 + aux:
-+	+ auxilary code used to estimate worst case complexity
+++ auxilary code used to estimate worst case complexity
 + bin:
-+	+ folder where tests are compiled in
+++ folder where tests are compiled in
 + code:
-+	+ implementation files (code/tests has unit tests)
+++ implementation files (code/tests has unit tests)
 + dictionaries:
-+	+ some dictionaries for testing (uminho dictionary and wc dictionary included)
+++ some dictionaries for testing (uminho dictionary and wc dictionary included)
 + include:
-+	+ header files
+++ header files
 + objects:
-+	+ the folder where objects are compiled into
+++ the folder where objects are compiled into
 + tests:
-+	+ folder where test files are created
+++ folder where test files are created
