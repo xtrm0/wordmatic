@@ -103,7 +103,7 @@ void calculate_needed_lenghts(char * filename, int * lens, int * used_chars, FIL
 
   fin = fopen(filename, "r");
   if (fin==NULL) {
-    printf("Erro: Nao foi possivel abrir \"%s\"!\n", filename);
+    /*printf("Erro: Nao foi possivel abrir \"%s\"!\n", filename);*/
     fprintf(fout, "-1" ENDL ENDL);
     exit(ENOENT);
   }
@@ -175,7 +175,7 @@ trie_node * new_trie_from_dictionary(char * filename, int * lens, int * used_cha
   /*termina se erro com o ficheiro .dic*/
   fin = fopen(filename, "r");
   if (fin==NULL) {
-    printf("Erro: Nao foi possivel abrir \"%s\"!\n", filename);
+    /*printf("Erro: Nao foi possivel abrir \"%s\"!\n", filename);*/
     fprintf(fout, "-1" ENDL ENDL);
     exit(ENOENT);
   }

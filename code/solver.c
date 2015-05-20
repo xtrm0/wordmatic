@@ -53,8 +53,8 @@ void dfs(solver_data * s, trie_iterator it, int i, int j, int len, int val, int 
     if(!(s->test_solution) || s->test_solution(s,len,val))
       s->add_solution(s,len,val);
 
-  for (y=j-1; y<=j+1; y++) {
-    for (x=i-1; x<=i+1; x++) {
+  for (x=i-1; x<=i+1; x++) {
+    for (y=j-1; y<=j+1; y++) {
       if (s->color[x][y])
         dfs(s, it, x, y, len, val, depth+1);
     }

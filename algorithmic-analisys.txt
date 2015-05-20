@@ -1,0 +1,81 @@
+Analise dos Requerimentos Complexionais do programa:
+Em primeiro lugar, seja:
+	+ D o numero de caracteres no dicionario,
+	+ N o numero de casos de teste
+	+ L o numero de caracteres por ronda (numero de letras em cada caso de teste, varia entre 16 e 18)
+	+ b o numero de caracteres diferentes (no pior caso 26)
+	+ P o numero palavras a imprimir para o ficheiro de solucao num dado caso de teste
+
+[Trie]
+
+Assim, em primeiro lugar a Trie utilizara de memoria:
+	WC -> O(D) caracteres
+	AC -> O(D) caracteres (serao utilizados menos caracteres consoantes os modos de jogo e k's, mas isso nada altera o caso medio em que e necessario guardar toda a trie em memoria
+	BC -> O(1) nao e alocada nenhuma palavra na trie porque o preprocessamento do ficheiro marca todas as palavras do dicionario como impossiveis de alcancar
+	
+E em termos de complexidades temporais, teremos que:
+ o tempo de construcao sera:
+	Para arvores esparsas teremos -> O(D)
+	Para arvores compactas teremos -> O(bD)
+ o tempo do it_travel sera:
+	Para arvores esparsas -> O(1)
+	Para arvores compactas -> O(b)
+
+No entanto, para efeitos de tempo real a implementacao com a radix tree e superior aquelas com a trie simples e com a prefix hashmap, na medida em que a memoria utilizada e tao baixa que b muito inferior as constantes de tempo dessas implementacoes
+
+
+
+[AVL]
+
+A AVL utilizara de memoria O(P*L)
+
+Em termos de tempo, teremos que:
+	Para a insercao de uma solucao na arvore: O(L log(K)), sendo este K o numero de palavra ja na arvore
+	Assim, para adicionar P palavras a arvore teremos complexidade O(L (log(2) + log (3) + ... + log (P)) = O (P * L log (P))
+
+	Para imprimir as palavras por ordem infixa(alfabetica), a complexidade sera: O(P * L) na medida em que cada no da arvore sera percorrido apenas uma vez
+
+
+
+[DFS]
+
+Por fim, para o DFS, seja f(b) o numero de caminhos distintos de tamanho b numa matrix 4x4.
+Como este problema se trata de um de pesquisa completa, no pior caso a complexidade sera sempre limitada
+por (f(1)+f(2)+...+f(L)). 
+No nosso caso a complexidade do algoritmo depende apenas do tempo de it_travel e destes f's. Sendo a complexidade final:
+O (b(f(1)+f(2)+f(3)+f(4)+f(5)+f(6)+...+f(L)))
+ora, podemos escrever f(1)+f(2)+f(3)+...+f(L) = x(L) < L^8 obviamente. De seguida podemos verificar que para o pior caso, L=16, x(L) <= L^6 (de nada influencia os casos abaixo, pois (x(10) > 10^16))
+Para alem disso acresce o tempo de inserir solucoes na AVL, isto e:
+O(P*L)
+
+
+Assim a complexidade de 1 caso de teste sera O(x(L) + P*L)
+O(bD + N(x(L) + P*L))
+
+
+
+Para alem disso temos a complexidade de contrucao da trie dada por O(bD) no pior caso
+sendo a complexidade para um ficheiro com N testes de caso:
+O(bD + N(x(L_i) + P_i*L_i))
+Que pode ser descrita em media como
+O(bD + N(x(L_max/2) + P*(L_max/2))),
+que podemos escrever como
+O(bD + N(x(L_max/2) + P*L_max))
+
+Note-se que a existencia da trie parece aumentar a complexidade temporal em relacao a uma pesquisa completa com uma comparacao em tabela de dispersao / arvore binaria de pesquisa dos resultados finais, o que acontece na realidade e que a trie permite fazer um pruning extensivo melhorando altamente o pior caso, em troca de praticamente nao haver pioramento no tempo de pior caso.
+
+Realizamos testes com a implementacao antiga da trie (trie simples com numero de filhos constante = b) que tinhamos e a nova (radix tree com filhos implementados com uma lista de tamanho <=b)
+
+[analise do pior caso temporal]
+O pior caso temporal pode ser descrito pelo modo 3 numa matrix de jogo do genero:
+a a a a
+a a a a
+a a a a
+a a a a
+Com um dicionario gerado pelo expressao regular a{0,15}[a-z], ordenado por ordem alfabetica de modo a que apos a construcao da trie os a's sejam sempre as ultimas palavras de cada lista
+O numero de operacoes neste caso sera mesmo da ordem de O(bD + N(x(L) + P*L)) nao servindo o prunning para muito.
+Sendo para o caso L>=16, o pior caso, a complexidade esta em O(bD + N(L^6 + P*L))
+Apesar disto, este caso de teste demorou menos de um segundo a correr nas nossas maquinas.
+
+Por fim o pior caso em termos de memoria sera qualquer ficheiro de puzzle que requeira inserir todos as palavras do dicionario na trie (iex todas as letras [a-z] no ficheiros e algum caso com o modo 3)
+Nesse caso a memoria sera efetivamente O(D), como se adicionarmos todas as solucoes a AVL utilizamos tambem memoria O(D), a complexidade de memoria no pior caso sera entao O(2D) = O(D)

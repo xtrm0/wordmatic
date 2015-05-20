@@ -22,10 +22,10 @@
 #include "../include/solver.h"
 
 void usage_print(int err) {
-  printf(
+  /*printf(
          "Usage: \n"
          "wordmatic <dictionary>.dic <puzzle>.puz\n"
-         );
+       );*/
   exit(err);
 }
 
@@ -48,7 +48,7 @@ void wordmatic_solver(char * filename, trie_node * trie, FILE * fout) {
 
   fin = fopen(filename, "r");
   if (fin == NULL) {
-    printf("Erro: Nao foi possivel abrir \"%s\"!\n", filename);
+    /*printf("Erro: Nao foi possivel abrir \"%s\"!\n", filename);*/
     fprintf(fout, "-1" ENDL ENDL);
     exit(ENOENT);
   }
@@ -114,7 +114,7 @@ int main(int argc, char ** argv) {
   /*testa se o fich de matrizes tem a extensão correcta*/
   tmp = strlen(argv[2]);
   if (tmp >= 4 && strcmp(argv[2] + tmp - 4, ".puz") != 0) {
-    printf("Puzzle filename must end in .puz\n");
+    /*printf("Puzzle filename must end in .puz\n");*/
     usage_print(EINVAL);
   }
 
@@ -125,7 +125,7 @@ int main(int argc, char ** argv) {
   strcpy(outfile+tmp-3, "sol");
   fout = fopen(outfile, "w");
   if (fout == NULL) {
-    printf("Erro: Nao foi possivel abrir \"%s\"!\n", outfile);
+    /*printf("Erro: Nao foi possivel abrir \"%s\"!\n", outfile);*/
     free(outfile);
     exit(ENOENT);
   }
@@ -133,7 +133,7 @@ int main(int argc, char ** argv) {
   /*testa se o fich dicionário tem a extensão correcta*/
   tmp = strlen(argv[1]);
   if (tmp >= 4 && strcmp(argv[1] + tmp - 4, ".dic") != 0) {
-    printf("Dictionary filename must end in .dic\n");
+    /*printf("Dictionary filename must end in .dic\n");*/
     fprintf(fout, "-1" ENDL ENDL);
     usage_print(EINVAL);
   }
