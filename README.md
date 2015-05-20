@@ -22,6 +22,7 @@ Just run make:
 
 
 Folder Structure:
+==========
 + aux:
 ++ auxilary code used to estimate worst case complexity
 + bin:
