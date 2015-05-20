@@ -1,9 +1,9 @@
 import random
 import string
-N = random.choice(range(1,3));
-lens = [1,1,1,1,1,1]
+N = random.choice(range(1,100));
+lens = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,3]
 vals = ['1','2','3','4','5','6','7','8','9'];
-def cell_gen(size=3, chars=string.ascii_lowercase):
+def cell_gen(chars=string.ascii_lowercase):
 	return ''.join(random.choice(chars) for _ in range(random.choice(lens)))
 print N
 for k in range(0,N):
